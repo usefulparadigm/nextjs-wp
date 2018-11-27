@@ -1,6 +1,7 @@
 import { withRouter } from 'next/router'
 import fetch from 'cross-fetch'
 import Layout from '../components/Layout'
+import { API_BASE } from '../constants'
 
 const Post = withRouter(({ post }) => (
   <Layout>
@@ -12,9 +13,9 @@ const Post = withRouter(({ post }) => (
 ))
 
 Post.getInitialProps = async ({ query }) => {
-  const res = await fetch('https://kopress.kr/wp-json/wp/v2/posts/'+query.id)
-  const json = await res.json()
-  return {post: json}
+  const res = await fetch(API_BASE+'wp/v2/posts/'+query.id)
+  const data = await res.json()
+  return {post: data}
 }
 
 export default Post

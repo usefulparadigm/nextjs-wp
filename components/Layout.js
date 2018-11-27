@@ -11,8 +11,6 @@ const Layout = (props) => (
     <main role="main" className="container">
       <Header />
       <div className="starter-template">
-        <h1>한국워드프레스사용자모임</h1>
-        <hr />
         {props.children}
       </div>
     </main>

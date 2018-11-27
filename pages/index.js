@@ -2,9 +2,12 @@
 import Link from 'next/link'
 import fetch from 'cross-fetch'
 import Layout from '../components/Layout'
+import { API_BASE } from '../constants'
 
 const Index = ({ posts=[] }) => (
   <Layout>
+    <h1>환영합니다, 워드프레스!</h1>
+    <hr />
     <ul>
       {posts.map(({ id, title }) =>
         <li key={id}>
@@ -16,7 +19,7 @@ const Index = ({ posts=[] }) => (
 )
 
 Index.getInitialProps = async ({ req }) => {
-  const res = await fetch('https://kopress.kr/wp-json/wp/v2/posts')
+  const res = await fetch(API_BASE+'wp/v2/posts')
   const data = await res.json()
   return {posts: data}
 }
